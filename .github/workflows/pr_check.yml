@@ -1,0 +1,19 @@
+name: Don't Break The Build!
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+    - run: yarn install
+    - run: yarn build
